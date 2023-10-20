@@ -19,3 +19,6 @@ For *n* = **15**, $100n^2$ runs quicker than $2^n$.
 ![Code](../Images/excercise1.2code.png)
 
 ![Graph](../Images/excercise1.2-4.grpah.png)
+
+
+For refrence of the code and if you want to [try](https://colab.research.google.com/drive/1YiYmrbp4SsFN9aX3jMQuPnyzfgNTXtXL?usp=sharing) it yourself.
