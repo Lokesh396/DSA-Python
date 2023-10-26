@@ -60,3 +60,31 @@ This completes the inductive step.
 Since the both cases have been perfomed by mathematical induction, the statement $T(n) = nlgn$ holds for all n that are exact power of 2.
 
 ###### 2.3-4 We can express insertion sort as a recursivve procedure as follows. In order to sort A[1..n], we can recursively A[1..n-1] and then insert A[n] into the sorted array A[1..n-1].Write a recurrence for the running time of the recursive version of insertion sort.
+
+$T(n) = 1 \text{ if } n = 1, T(n) = (n-1) + \Theta(n) \text{ if } n > 1$
+
+###### 2.3-5 Referring back to the searching problem (see Exercise 2.1-3), observe that if the sequence A is sorted, we can check the midpoint of the sequence against $v$ and eliminate half of the sequence from further consideration. The binary search algorithm repeats this procedure, halving the size of the remaining portion of the sequence each time. Write pseudocode, either iterative or recursive, for binary search. Argue that the worst-case running time of binary search is $lg n$.
+
+**PseudoCode**
+```
+BinarySearch(A, p, r, v)
+1 mid = ⌊p + r / 2⌋
+2 if A[mid] == v
+3     return mid
+4 if A[mid] < v
+5     BinarySearch(A, mid+1, r, v)
+6 else
+7     BinarySearch(A, p, mid, v)
+```
+
+The worst case time complexity of BinarySearch is $lgn$ beacuse it divides the input array by half for every recurrsive call. At maximum it will run for $lgn$ times.
+
+###### 2.3.6 Observe that the while loop of lines 5–7 of the INSERTION-SORT procedure in Section 2.1 uses a linear search to scan (backward) through the sorted subarray A[1..j-1]. Can we use a binary search (see Exercise 2.3-5) instead to improve the overall worst-case running time of insertion sort to ‚ $nlg n$?
+
+This loop serves two purposes:
+-  A linear search to scan (backward) through the sorted sub-array to find the proper position for key.
+- Shift the elements that are greater than key towards the end to insert key in the proper position
+
+Although we can reduce the number of comparisons by using binary search to accomplish purpose 1, we still need to shift all the elements greater than key owards the end of the array to make space for key. And this shifting of elements runs at Θ(n) time, even in average case (as we need to shift half of the elements). So, the overall worst-case running time of insertion sort will still be $\Theta(n^2)$.
+
+###### 2.3-7 Describe a $\Theta(nlgn)$ -time algorithm that, given a set S of n integers and another integer x, determines whether or not there exist two elements in S whose sum is exactly x.
