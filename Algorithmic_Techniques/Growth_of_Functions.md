@@ -26,3 +26,20 @@ $\Omega(g(n)) = f(n) : there exists positive constants c and n~0~ such that 0<= 
 ![Asymptotic notation](./images/asymptotic-notations.png)
 
 
+Theorem 3.1
+
+For any two functions $f(n)$ and $g(n)$, we have $f(n) = \Theta(g(n))$ if and only if $f(n) = O(g(n))$ and $f(n) = \Omega(g(n))$.
+
+**o-notation**
+
+The asymptotic upper bound provided by the *O*-notation may or may not be asymptotically tight. The bound $2n^2$ = $O(n^2)$ is asymptotically tight but the bound $2n = O(n^2)$ id not. we use **o-notation** to denote an upper bound that is not asymptotically tight. we formally define $o(g(n))$ as the set
+
+$o(g(n)) = f(n) : $ for any positive constant $c > 0$, there exists a constant n~0~ > 0 such that $0 <= f(n) < c(g(n))$ for all $n >= n$~0~.
+
+For example, $2n = o(n^2)$, but $2n^2 \neq o(n^2)$.
+
+**$\omega$-notation**
+
+By analogy $\omega$-notation is to $\Omega$ as *o*-notation is to *O*-notation. We use $\omega$-notation to denote a lower bound that is not asymptotically tight. One way yo define it is by $f(n) \in \omega(g(n))$ if and only if $g(n) \in o(f(n))$.
+Formally, however, we define $w(g(n))$ as the set
+$\omega(g(n))  = f(n) :$for any positive constant $c > 0$, there exists a constant $n~0~ > 0$ such that $0<= c(g(n)) < f(n)$ for all $n >= n$~0~.
