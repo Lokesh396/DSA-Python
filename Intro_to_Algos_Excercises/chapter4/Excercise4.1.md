@@ -27,6 +27,7 @@ MAXIMUM-SUBARRAY-SUM-BRUTE-FORCE(A, low, high)
 
 ***Brute-Force***
 ```python
+
 def maximum_subarray_sum(A, low, high):
     max_sum = -float('inf')
     left_index = None
