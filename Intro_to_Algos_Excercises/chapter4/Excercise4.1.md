@@ -82,3 +82,43 @@ def maximum_subarray_sum(A, low, high):
         else:
             return(cross_low, cross_high, cross_sum)
 ```
+
+###### 4.1-4 Suppose we change the definition of the maximum-subarray problem to allow the result to be an empty subarray, where sum of the values of an empty subarray is 0.How would you change any of algorithms that do not allow empty subarrays to permit an empty subarray to be the result?
+
+we can initialize left-sum and right-sum to zero instead of −∞ as we are not going to accept any negative sum as the answer in FIND-MAX-CROSSING-SUBARRAY.
+
+###### 4.1-5 Use the following ideas to develop a nonrecursive, linear-time algorithm for the maximum-subarray problem. Start at the left end of the array, and progress toward the right, keeping track of the maximum subarray seen so far. Knowing a maximum subarray of A[1...j], extend the answer to find a maximum subarray ending at index j+1 by using the following observation: a maximum subarray of A[1..j+1] is either a maximum subarray of A[1...j] or a subarray A[1..j+1], for some 1 $\leq$ i$\leq$  j + 1.Determine a maximum subarray of the form A[i..j+1] in constant time based on knowing a maximum subarray ending at index j .
+
+
+```python
+def max_subarray_sum(A):
+    low = 0
+    high = 0
+    max_sum = -float('inf')
+    temp_sum = 0
+    current_left  = 0
+    for i in range(len(A)):
+        temp_sum += A[i]
+        if temp_sum  > max_sum:
+            high = i
+            low = current_left
+            max_sum = temp_sum
+        if temp_sum < 0:
+            temp_sum = 0
+            current_left = i + 1
+    return(low, high, max_sum)
+```
+
+Using [*Kadane's*](https://www.geeksforgeeks.org/largest-sum-contiguous-subarray/) Algorithm
+
+
+```python
+def maxSubArray(nums):
+    cm = nums[0]
+    gm = nums[0]
+    for i in range(1, len(nums)):
+        cm = max(nums[i], cm + nums[i])
+        gm = max(gm, cm)
+
+    return gm
+```
